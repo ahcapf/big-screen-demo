@@ -1,6 +1,10 @@
 <template>
   <div class="wrapper">
-    <div class="wrapper-inner" ref="grid" :style="style">
+    <div
+      ref="grid"
+      class="wrapper-inner"       
+      :style="style"
+    >
       <slot />
     </div>    
   </div>
@@ -15,14 +19,15 @@ export default {
       type: [String, Array],
       required: true,
     },
+    /* eslint-disable vue/require-default-prop */
     columns: {
-      type: String,
+      type: String
     },
     rows: {
-      type: String,
+      type: String
     },
     gap: {
-      type: String,
+      type: String
     }
   },
   data() {

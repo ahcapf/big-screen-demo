@@ -1,21 +1,30 @@
 <template>
-  <m-frame>
+  <m-frame title="十大功能">
     <div class="content-box">
       <div class="content-main">
-        <img src="@/assets/image/tenFunctions/big_circle.png" class="main-img">
+        <img 
+          src="@/assets/image/tenFunctions/big_circle.png" 
+          class="main-img"
+        >
         <div 
-          v-for="func in funcList" 
+          v-for="(func, index) in funcList" 
           :key="func.title" 
           class="function-item"
         >
           <div class="function-item-inner">
-            
-          </div>
-          <div class="function-main">
-            <div class="function-title">{{ func.title }}</div>
-            <div class="function-desc">{{ func.desc }}</div>
-          </div>
-          <img :src="func.img">
+            <div
+              class="function-main"
+              :class="leftMap.includes(index + 1) ? 'position-right' : 'position-left'"
+            >
+              <div class="function-title">
+                {{ func.title }}
+              </div>
+              <div class="function-desc">
+                {{ func.desc }}
+              </div>
+            </div>
+            <img :src="func.img">
+          </div>          
         </div>
       </div>      
     </div>
@@ -28,6 +37,7 @@ export default {
   components: { MFrame },
   data() {
     return {
+      leftMap: [1, 2, 3, 9, 10],
       funcList: [
         {
           title: '专业服务匹配',
@@ -77,7 +87,7 @@ export default {
         {
           title: '上市行政服务',
           desc: '设立行政服务受理窗口，一站式解决企业上市诉求',
-          img: require('@/assets/image/tenFunctions/item_3.png')
+          img: require('@/assets/image/tenFunctions/item_10.png')
         }
       ]
     }
@@ -96,130 +106,131 @@ export default {
     justify-content: center;
     align-content: center;
     .content-main {
-      width: pxToRem(624px);
-      height:  pxToRem(624px);
+      width: 624px;
+      height:  624px;
       position: relative;
       .main-img {
         @include full;
       }
       .function-item {
         position: absolute;
-        width: pxToRem(82px);
-        height: pxToRem(82px);
+        width: 82px;
+        height: 82px;
         top: 50%;
-        margin-top: pxToRem(-41px);
-        margin-left: pxToRem(-30px);
-        transform-origin: pxToRem(343px) pxToRem(41px);
+        margin-top: -41px;
+        margin-left: -30px;
+        transform-origin: 343px 41px;
+        .function-item-inner {
+          @include full;
+        }
         img {
           position: absolute;
           left: 0;
           top: 0;
           z-index: 3;
           width: 100%;
-          // transform: rotate(-108deg);
         }
 
         .function-main {
           position: absolute;
           z-index: 2;
-          right: 60%;
           top: 50%;
           transform: translateY(-50%);
-          height: pxToRem(77px);
+          height: 77px;
           
-          // background: linear-gradient(62deg, #05133B 0%, #082761 100%),
-          // linear-gradient(120deg,transparent 40px, #082761 100%) top left;
-          background:linear-gradient(120deg,transparent 40px, #082761 0);
-          padding-right: pxToRem(50px);
-          text-align: right;
+          // background: linear-gradient(62deg, #05133B 0%, #082761 100%);
+          
+          padding-right: 50px;          
           display: flex;
           flex-direction: column;
           justify-content: center;
           white-space: nowrap;
-          padding-left: pxToRem(31px);           
+          padding-left: 31px;           
           .function-title {
             font-weight: 600;
             color: #FFFFFF;
-            font-size: pxToRem(24px);
+            font-size: 24px;
             letter-spacing: 5px;
             text-shadow: 0px 0px 3px #0B72E4;
-            margin-bottom: pxToRem(6px);
+            margin-bottom: 6px;
             
           }
           .function-desc {
-            font-size: pxToRem(14px);
+            font-size: 14px;
             font-weight: 400;
             color: #D1DCED;
+          }
+          &.position-left {
+            left: 60%;
+            background:linear-gradient(-120deg,transparent 40px, #082761 0);
+            padding-left: 50px;
+            padding-right: 31px;  
+          }
+          &.position-right {
+            background:linear-gradient(120deg,transparent 40px, #082761 0);
+            right: 60%;
+            text-align: right;
           }
         }
         // 每个固定旋转36度长条间距不一致
         &:nth-of-type(2)  {
           transform: rotateZ(30deg);
-          img {
+          .function-item-inner {
             transform: rotateZ(-30deg);
-          }
-          .function-main {
-            transform: translateY(-50%) rotateZ(-30deg);
-            transform-origin: 102% 40%;
-            padding-left: pxToRem(45px);
+            .function-main {
+              padding-left: 45px;
+            }
           }
         }
         &:nth-of-type(3) {
           transform: rotateZ(70deg);
-          img {
+          .function-item-inner {
             transform: rotateZ(-70deg);
-          }
-          .function-main {
-            transform: translateY(-50%) rotateZ(-70deg);
-            transform-origin: 101% 45%;
           }
         }
         &:nth-of-type(4) {
           transform: rotateZ(108deg);
-          .function-main {
-            transform: translateY(-50%) rotateZ(-108deg) rotateY(180deg);
-            transform-origin: 100% 40%;
+          .function-item-inner {
+            transform: rotateZ(-108deg);
           }
         }
         &:nth-of-type(5)  {
-          transform: rotateZ(144deg);
-          .function-main {
-            transform: translateY(-50%) rotateZ(-144deg) rotateY(180deg);
-            transform-origin: 97% 40%;
+          transform: rotateZ(150deg);
+          .function-item-inner {
+            transform: rotateZ(-150deg);
           }
         }
         &:nth-of-type(6) {
           transform: rotateZ(180deg);
-          .function-main {
-            // transform: translateY(-50%) rotateX(180deg);
+          .function-item-inner {
+            transform: rotateZ(-180deg);
           }
         }
         &:nth-of-type(7)  {
-          transform: rotateZ(216deg);
-          .function-main {
-            transform: translateY(-50%) rotateZ(-36deg);
-            transform-origin: 100% 40%;
+          transform: rotateZ(210deg);
+          .function-item-inner {
+            transform: rotateZ(-210deg);
           }
         }
         &:nth-of-type(8)  {
           transform: rotateZ(252deg);
-          .function-main {
-            transform: translateY(-50%) rotateZ(-72deg);
-            transform-origin: 100% 40%;
+          .function-item-inner {
+            transform: rotateZ(-252deg);
           }
         }
-         &:nth-of-type(9)  {
-           transform: rotateZ(288deg);
-          .function-main {
-            transform: translateY(-50%) rotateZ(-288deg);
-            transform-origin: 105% 40%;
+        &:nth-of-type(9)  {
+           transform: rotateZ(290deg);
+          .function-item-inner {
+            transform: rotateZ(-290deg);
+            .function-main {
+              padding-left: 200px;
+            }
           }
          }
         &:nth-of-type(10)  {
-          transform: rotateZ(324deg);
-          .function-main {
-            transform: translateY(-50%) rotateZ(-324deg);
-            transform-origin: 102% 40%;
+          transform: rotateZ(330deg);
+          .function-item-inner {
+            transform: rotateZ(-330deg);
           }
         }
       }

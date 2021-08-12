@@ -1,0 +1,165 @@
+<template>
+  <div class="border-box-1" :ref="ref">
+    <svg class="border-svg-container" :width="width" :height="height" >
+      <defs>
+        <linearGradient x1="2.20910162%" y1="50%" x2="97.0946673%" y2="47.5862196%" id="linearGradient-1">
+          <stop stop-color="#5998D1" stop-opacity="0.574640447" offset="0%"></stop>
+          <stop stop-color="#679ED3" stop-opacity="0.821818093" offset="24.8345648%"></stop>
+          <stop stop-color="#71A3D4" offset="54.2815095%"></stop>
+          <stop stop-color="#639DD2" stop-opacity="0.919873205" offset="83.6997719%"></stop>
+          <stop stop-color="#5998D1" stop-opacity="0.513257007" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="76.1979796%" y1="3.9777928%" x2="56.1398611%" y2="54.7756521%" id="linearGradient-2">
+          <stop stop-color="#5B99D1" offset="0%"></stop>
+          <stop stop-color="#29669D" stop-opacity="0.767272522" offset="46.7278458%"></stop>
+          <stop stop-color="#2D5684" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="111.440768%" x2="50%" y2="8.88777638%" id="linearGradient-3">
+          <stop stop-color="#5B99D1" offset="0%"></stop>
+          <stop stop-color="#29669D" stop-opacity="0.767272522" offset="46.7278458%"></stop>
+          <stop stop-color="#2D5684" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="10.0928241%" y1="9.00133709%" x2="71.4522664%" y2="35.7900728%" id="linearGradient-4">
+          <stop stop-color="#5B99D1" offset="0%"></stop>
+          <stop stop-color="#29669D" stop-opacity="0.767272522" offset="46.7278458%"></stop>
+          <stop stop-color="#2D5684" offset="100%"></stop>
+        </linearGradient>
+      </defs>
+      <g id="group" fill="none" stroke-width="1" fill-rule="evenodd">
+        <path
+          id="Stroke-5"
+          :d="`
+            M1, 57
+            L57, 1 
+            L${width - 57}, 1                      
+            L${width - 1}, 57 
+            L${width - 1}, ${height - 57}
+            L${width - 57}, ${height - 1} 
+            L57, ${height - 1}
+            L1, ${height - 57}
+            Z
+          `"                  
+          stroke="url(#linearGradient-1)"
+          stroke-width="2"
+        >
+        </path>      
+        <path
+          id="Fill-1" 
+          :d="`
+            M${(width - markWidth) / 2 } ${height} 
+            h${markWidth}                  
+          `"
+          stroke="#F8E9B4"
+          stroke-width="6"
+        >
+        </path>
+        <polygon 
+          id="Fill-7" 
+          fill-opacity="0.731889205" 
+          fill="#041B47" 
+          :points="`
+            11,65 
+            67,9 
+            ${width - 67}, 9 
+            ${width - 11}, 65 
+            ${width - 11}, ${height - 65} 
+            ${width - 67}, ${height - 9} 
+            67, ${height - 9} 
+            11, ${height - 65}
+          `"
+        >
+        </polygon>
+                
+        <polygon 
+          id="Stroke-9" 
+          stroke="#31486E" 
+          :points="`
+            11 64 
+            67 9 
+            ${width - 68} 9 
+            ${width - 12} 64 
+            ${width - 12} ${height - 64}
+            ${width - 68} ${height - 9} 
+            67 ${height - 9} 
+            11 ${height - 64}                  
+          `"
+        ></polygon>
+        <g id="leftTop">
+            <polygon id="Fill-23" fill-opacity="0.586045058" fill="#0F182F" points="5,15 16,4 37,4 5,36"></polygon>
+            <path d="M1,16 L16,1  L45,1 L1,45  Z" id="Stroke-3" stroke="url(#linearGradient-4)" stroke-width="2"></path>
+        </g>
+        <g id="rightTop" :transform="`translate(${width-47}, 0)`">
+          <polygon 
+            id="Fill-19" 
+            fill-opacity="0.586045058" 
+            fill="#0F182F" 
+            points="42,16 42,37 10,5 31.105,5"
+          >
+          </polygon>
+          <path d="M30.5857864,1 L46,16.4142136 L46,44.5857864 L2.41421356,1 L30.5857864,1 Z" id="Stroke-11" stroke="url(#linearGradient-2)" stroke-width="2"></path>
+        </g>
+        <g id="rightBottom" :transform="`translate(${width-47}, ${height-47})`">
+          <path d="M46,2.41421356 L46,30.5857864 L30.5857864,46 L2.41421356,46 L46,2.41421356 Z" id="Stroke-15" stroke="url(#linearGradient-3)" stroke-width="2"></path>
+          <polygon id="Fill-17" fill-opacity="0.586045058" fill="#0F182F" points="31.106 42 10 42 42 10 42 31.106"></polygon>
+        </g>
+        <g id="leftBottom" :transform="`translate(0, ${height-47})`">
+          <path d="M1,2.41421356 L44.5857864,46 L16.4142136,46 L1,30.5857864 L1,2.41421356 Z" id="Stroke-13" stroke="url(#linearGradient-3)" stroke-width="2"></path>
+          <polygon id="Fill-21" fill-opacity="0.586045058" fill="#0F182F" points="15 42 36 42 4 10 4 31.106"></polygon>
+        </g>
+      </g>
+    </svg>
+    <div class="border-box-content">
+      <slot />
+    </div>
+  </div>
+</template>
+
+<script>
+import autoResize from '@/mixin/autoResize'
+
+export default {
+  name: 'BorderBox1',
+  mixins: [autoResize],
+  data() {
+    return {
+      ref: 'border-box-1'
+    }
+  },
+  computed: {
+    markWidth() {
+      switch(true) {
+        case this.width <= 380:
+          return 160;
+        case this.width <= 500:
+          return 200;
+        case this.width < 1600:
+          return 240;
+        default:
+          return 480;
+      }
+    }
+  }
+}
+</script>
+
+<style lang="scss" scoped>
+.border-box-1 {
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  .border-svg-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+  }
+
+  .border-box-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+}
+</style>

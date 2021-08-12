@@ -12,5 +12,17 @@ module.exports = {
         }
       }
     }
-  }
+  },
+  // css: {
+  //   loaderOptions: {
+  //     postcss: {
+  //       css: {},
+  //       plugins: [
+  //         require('postcss-px2rem')({
+  //           remUnit: 80
+  //         })
+  //       ]
+  //     }
+  //   }
+  // }
 }

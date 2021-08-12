@@ -3,9 +3,9 @@
     <div class="header-left">
       <span class="city">{{ weatherInfo.city }}</span>
       <span class="weather">{{ weatherInfo.wea }}</span>
-      <span 
-        class="temperature" 
+      <span
         v-if="weatherInfo.Interval"
+        class="temperature"        
       >
         {{ weatherInfo.Interval[0] }}～{{ weatherInfo.Interval[1] }} ℃
       </span>
@@ -91,25 +91,25 @@ export default {
       overflow:hidden;
       justify-self: center;
       img {
-        width: pxToRem(678px);
+        width: 678px;
       }
     }
     .header-left, .header-right {
       align-self: center;
       font-weight: 600;
       color: #15E4F8;
-      font-size: pxToRem(14px);
+      font-size: 14px;
       span:not(:last-child) {
-        margin-right: pxToRem(24px)
+        margin-right: 24px
       }
     }
     .header-left {
       justify-self: start;
-      padding-left: pxToRem(51px);
+      padding-left: 51px;
     }
     .header-right {
       justify-self: end;
-      padding-right: pxToRem(26px);      
+      padding-right: 26px;      
     }
 
   }
